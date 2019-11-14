@@ -1,31 +1,70 @@
 import React, { Component } from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
+import TextField from '@material-ui/core/TextField';
+
 
 export default class Create extends Component {
     render() {
+        const Styles = makeStyles(theme => ({
+            fab: {
+                margin: theme.spacing(1),
+            },
+            container: {
+                display: 'flex',
+                flexWrap: 'wrap',
+            },
+            textField: {
+                marginLeft: theme.spacing(1),
+                marginRight: theme.spacing(1),
+                width: 200,
+            },
+        }));
+
         const formstyle = {
             display: "flex",
-            flexDirection: "column"
-        }
-        const item = {
-            marginTop: "2rem",
-            flex: 1,
+            flexDirection: "column",
+            textAlign: "right"
         }
         return (
-            <div >
-                <form onSubmit={this.props.handlingSubmit} style={formstyle}>
-                    <input
-                        name='title'
-                        value={this.props.title}
-                        onChange={this.props.handlingChange}
-                        style={item}
-                    />
-                    <textarea
-                        name='content'
-                        value={this.props.content}
-                        onChange={this.props.handlingChange}
-                        style={item}
-                    />
-                    <button type="submit" style={item}>글 작성</button>
+            <div>
+                <form onSubmit={this.props.handlingSubmit} >
+                    <div style={formstyle}>
+                        <TextField
+                            maxLength="10"
+                            name='title'
+                            value={this.props.title}
+                            onChange={this.props.handlingChange}
+                            className={Styles.textField}
+                            label="Title"
+                            margin="normal"
+                            variant="outlined"
+                            autoComplete="off"
+                        />
+                        <TextField
+                            value={this.props.content}
+                            onChange={this.props.handlingChange}
+                            name='content'
+                            label="Content"
+                            multiline
+                            rows="4"
+                            className={Styles.textField}
+                            margin="normal"
+                            variant="outlined"
+                        />
+                        <div>
+                            <Fab
+                                size="medium"
+                                color="secondary"
+                                aria-label="edit"
+                                className={Styles.fab}
+                                type="submit"
+                            >
+                                <EditIcon />
+                            </Fab>
+                        </div>
+                    </div>
                 </form>
             </div >
         )
