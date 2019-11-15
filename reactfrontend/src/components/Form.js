@@ -3,14 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField';
-
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
 
 export default class Create extends Component {
     render() {
         const Styles = makeStyles(theme => ({
-            fab: {
-                margin: theme.spacing(1),
-            },
             container: {
                 display: 'flex',
                 flexWrap: 'wrap',
